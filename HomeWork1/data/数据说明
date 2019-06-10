@@ -1,0 +1,29 @@
+Data Set Information:
+
+This research aimed at the case of customers default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel a€?Sorting Smoothing Methoda€? to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.
+
+
+Attribute Information:
+
+This research employed a binary variable, default payment (Yes = 1, No = 0), as the response variable. This study reviewed the literature and used the following 23 variables as explanatory variables: 
+X1: Amount of the given credit (NT dollar): it includes both the individual consumer credit and his/her family (supplementary) credit. 
+X2: Gender (1 = male; 2 = female). 
+X3: Education (1 = graduate school; 2 = university; 3 = high school; 4 = others). 
+X4: Marital status (1 = married; 2 = single; 3 = others). 
+X5: Age (year). 
+X6 - X11: History of past payment. We tracked the past monthly payment records (from April to September, 2006) as follows: X6 = the repayment status in September, 2005; X7 = the repayment status in August, 2005; . . .;X11 = the repayment status in April, 2005. The measurement scale for the repayment status is: -1 = pay duly; 1 = payment delay for one month; 2 = payment delay for two months; . . .; 8 = payment delay for eight months; 9 = payment delay for nine months and above. 
+X12-X17: Amount of bill statement (NT dollar). X12 = amount of bill statement in September, 2005; X13 = amount of bill statement in August, 2005; . . .; X17 = amount of bill statement in April, 2005. 
+X18-X23: Amount of previous payment (NT dollar). X18 = amount paid in September, 2005; X19 = amount paid in August, 2005; . . .;X23 = amount paid in April, 2005. 
+
+中文说明:
+本研究针对台湾地区客户违约支付案例，比较六种数据挖掘方法之违约概率预测准确性。从风险管理的角度来看，违约概率预测准确度的结果将比分类的二元结果更有价值——可信或不可信客户。由于实际违约概率未知，本研究提出了一种新的违约概率。排序平滑方法估计实际违约概率。以实际违约概率为响应变量（y），预测违约概率为自变量（x），简单线性回归结果（y=a+bx）表明，人工神经网络生成的预测模型具有最高的确定系数，其回归截距（a）接近于0，回归系数（b）为1。因此，在六种数据挖掘技术中，人工神经网络是唯一能够准确估计实际违约概率的方法。
+属性信息：
+本研究采用二元变数，违约金（是=1，否=0）作为回应变数。本研究回顾了文献，并使用以下23个变量作为解释变量：
+X1：信用证金额（新台币）：包括个人消费信用证和家庭（补充）信用证。
+x2：性别（1=男性；2=女性）。
+x3：教育（1=研究生院；2=大学；3=高中；4=其他）。
+X4：婚姻状况（1=已婚；2=单身；3=其他）。
+X5：年龄（年）。
+X6-X11:过去付款的历史记录。我们跟踪了过去的每月付款记录（2006年4月至9月），如下：X6=2005年9月的还款情况；X7=2005年8月的还款情况；..；x11=2005年4月还款情况。还款状态的计量尺度为：1=按时支付；1=一个月的付款延迟；2=两个月的付款延迟；..；8=付款延迟8个月；9=付款延迟9个月及以上。
+X12-X17：对账单金额（新台币）x12=2005年9月对账单金额；x13=2005年8月对账单金额；..；x17=2005年4月账单金额。
+X18-X23：上期付款金额（新台币）。x18=2005年9月支付的金额；x19=2005年8月支付的金额；..；X23=2005年4月支付的金额。
