@@ -2,9 +2,11 @@
 import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
-
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.utils import shuffle
 
 # 相关函数
+# 单列填充中位数
 def fill_Median(data):
     proccessed_data = data
     proccessed_data = data.fillna(data.median())
@@ -14,18 +16,16 @@ def fill_Median(data):
 raw_train_data = pd.read_csv('data/soybean-large.data',header=None)
 raw_test_data = pd.read_csv('data/soybean-large.test',header=None)
 
-# 1、将?置空 NA
+# 1、将?置空 NAN
 raw_train_data.replace('?',np.nan,inplace=True)
 raw_test_data.replace('?',np.nan,inplace=True)
 # 2、将NAN改成列的中位数
 train_columns = raw_train_data.columns.size
 i = 1
-while i < train_columns: # 处理空值,插入空值
+while i < train_columns: # 处理空值,
     raw_train_data[i] = fill_Median(raw_train_data[i])
     i += 1
-
-print(raw_train_data)
-
+# print(raw_train_data)
 train = raw_train_data
 train_data = train.values[:, 1:train_columns]
 train_labels = train.values[:, 0:1]
@@ -40,11 +40,17 @@ while i < test_columns: # 处理空值
 test_data = test.values[:, 1:test_columns]
 test_labels = test.values[:, 0:1]
 
-#调用Bagging方法
-bagging = DecisionTreeClassifier()
-# 训练的数据 训练的标签
-bagging.fit(train_data, train_labels)
-predicted_labels = bagging.predict(test_data)
+#建立模型
+#clf = DecisionTreeClassifier()
+#clf.fit(train_feat, train_labels)
+# 
+# 随机森林
+forest_train_feature,forest_train_labels = shuffle(train_data,train_labels,random_state=3)
+clf = RandomForestClassifier()
+clf.fit(forest_train_feature,forest_train_labels.ravel())
+
+predicted_labels = clf.predict(test_data)
+
 
 correct = 0
 for i in range(len(test_data)):
