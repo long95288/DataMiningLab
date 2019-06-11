@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from RandomForestClassifier import RandomForestClassifier
+#from RandomForestClassifier import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 #读入输入数据
 #train = pd.read_csv('../data/train_data.csv', header=0)
@@ -74,11 +75,13 @@ for i in range(columns):
         raw_train_data = np.hstack((raw_train_data,temp_data)) # 合并数据
         
 print(raw_train_data.shape)
-train_data = raw_train_data[:, 1:columns-1]
-train_labels = raw_train_data[:, columns-1]
 
+train_data = raw_train_data[:, 1:columns]
+train_labels = raw_train_data[:, 0:1]
+print('训练标签',train_labels)
 # 处理测试集
 test_columns = test.columns.size
+
 raw_test_data = np.array(test.values[:,0:1])
 raw_test_data = strTonum(raw_test_data)
 for i in range(test_columns):
@@ -88,13 +91,17 @@ for i in range(test_columns):
 
 # 测试数据维数
 print('测试数据维数',raw_test_data.shape)
-test_data = raw_test_data[:,1:test_columns-1]
-test_labels = raw_test_data[:,test_columns-1]
+test_data = raw_test_data[:,1:test_columns]
+test_labels = raw_test_data[:,0:1]
 
 #调用RandomForest方法
-bagging = RandomForestClassifier(10)
-bagging.fit(train_data, train_labels)
-predicted_labels = bagging.predict(test_data)
+# bagging = RandomForestClassifier(10)
+# bagging.fit(train_data, train_labels)
+# predicted_labels = bagging.predict(test_data)
+clf = DecisionTreeClassifier()
+clf.fit(train_data,train_labels)
+predicted_labels = clf.predict(test_labels)
+
 print('预测集')
 print(predicted_labels)
 print('测试集标签')
