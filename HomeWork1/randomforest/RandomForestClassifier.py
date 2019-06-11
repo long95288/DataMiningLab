@@ -102,17 +102,23 @@ class RandomForestClassifier():
             for i in range(len(predict_list[0])): # 统计该特征值的位置
                 counter_1 = 0 # 值为1的个数
                 counter_0 = 0 # 值为0的个i
+                counter_2 = 0 # 值为2的个数
                 for j in range(predict_list_len): # 统计10组数据中的0和1和权重
                     if predict_list[j][i] == 0:
                         counter_0 += 1
+                    elif predict_list[j][i] == 1:
+                        counter_1 += 1
                     else:
-                        counter_1 += 0
-                if counter_0 < counter_1: #1 的票数多
+                        counter_2 += 1
+                
+                if counter_0 < counter_1 and counter_2 < counter_1: # 1 的票数多
                     predict_label[i] = 1
-                elif counter_0 > counter_1: # 0的票数多
+                elif counter_0 > counter_1 and counter_0 > counter_2: # 0的票数多
                     predict_label[i] = 0
+                elif counter_2 > counter_1 and counter_2 > counter_0: # 2的票数多
+                    predict_label[i] = 2
                 else: # 1和0的数量一样,随机选一个 
-                    random_select = random.randint(0,1)
+                    random_select = random.randint(0,2)
                     predict_label[i] = random_select
             ##
             print(predict_label)
