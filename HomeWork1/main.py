@@ -8,9 +8,9 @@ from sklearn.utils import shuffle
 # 相关函数
 # 单列填充中位数
 def fill_Median(data):
-    proccessed_data = data
-    proccessed_data = data.fillna(data.median())
-    return proccessed_data
+    processed_data = data
+    processed_data = data.fillna(data.median())
+    return processed_data
 ###############################
 # 读入未处理的 还有?号的
 raw_train_data = pd.read_csv('data/soybean-large.data',header=None)
@@ -64,3 +64,7 @@ if(correct_ratio > 0.8):
     print('正确率为',correct_ratio)
 else:
     print("正确率为：", correct_ratio, end='')
+
+# 写入文件中
+f = open('data/predict_labels.csv','a')
+f.writelines(predicted_labels.ravel())
